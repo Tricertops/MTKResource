@@ -1,0 +1,12 @@
+//
+//  MTKResourceExample-Prefix.pch
+//  MTKResourceExample
+//
+//  Created by Martin Kiss on 26.4.13.
+//  Copyright (c) 2013 iMartin Kiss. All rights reserved.
+//
+
+#ifdef __OBJC__
+    #import <Foundation/Foundation.h>
+    #import <UIKit/UIKit.h>
+#endif
