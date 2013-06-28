@@ -24,7 +24,7 @@
     self.window.backgroundColor = [UIColor blackColor];
     [self.window makeKeyAndVisible];
     
-    MTKResource *resourcer = [[MTKResource alloc] init];
+    [[MTKResource shared] pathForFile:@"File" directory:nil extensions:@[@"data",@"txt"]];
     
     
     return YES;

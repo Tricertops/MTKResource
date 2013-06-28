@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		5B6D19A6177D7DB900FA2E3E /* File.txt in Resources */ = {isa = PBXBuildFile; fileRef = 5B6D19A5177D7DB900FA2E3E /* File.txt */; };
 		5BADE28F172A652D00B6E7C5 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5BADE28E172A652D00B6E7C5 /* Foundation.framework */; };
 		5BADE294172A652D00B6E7C5 /* MTKResource.h in CopyFiles */ = {isa = PBXBuildFile; fileRef = 5BADE293172A652D00B6E7C5 /* MTKResource.h */; };
 		5BADE296172A652D00B6E7C5 /* MTKResource.m in Sources */ = {isa = PBXBuildFile; fileRef = 5BADE295172A652D00B6E7C5 /* MTKResource.m */; };
@@ -57,6 +58,7 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
+		5B6D19A5177D7DB900FA2E3E /* File.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = File.txt; sourceTree = "<group>"; };
 		5BADE28B172A652D00B6E7C5 /* libMTKResource.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libMTKResource.a; sourceTree = BUILT_PRODUCTS_DIR; };
 		5BADE28E172A652D00B6E7C5 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
 		5BADE293172A652D00B6E7C5 /* MTKResource.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = MTKResource.h; sourceTree = "<group>"; };
@@ -113,6 +115,21 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		5B6D19A3177D7CE000FA2E3E /* Resources */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Resources;
+			sourceTree = "<group>";
+		};
+		5B6D19A4177D7D9A00FA2E3E /* Resources */ = {
+			isa = PBXGroup;
+			children = (
+				5B6D19A5177D7DB900FA2E3E /* File.txt */,
+			);
+			path = Resources;
+			sourceTree = "<group>";
+		};
 		5BADE282172A652D00B6E7C5 = {
 			isa = PBXGroup;
 			children = (
@@ -157,19 +174,12 @@
 		5BADE2A5172A652D00B6E7C5 /* Tests */ = {
 			isa = PBXGroup;
 			children = (
+				5BADE2A7172A652D00B6E7C5 /* MTKResourceTests-Info.plist */,
 				5BADE2AB172A652D00B6E7C5 /* MTKResourceTests.h */,
 				5BADE2AC172A652D00B6E7C5 /* MTKResourceTests.m */,
-				5BADE2A6172A652D00B6E7C5 /* Supporting Files */,
+				5B6D19A3177D7CE000FA2E3E /* Resources */,
 			);
 			path = Tests;
-			sourceTree = "<group>";
-		};
-		5BADE2A6172A652D00B6E7C5 /* Supporting Files */ = {
-			isa = PBXGroup;
-			children = (
-				5BADE2A7172A652D00B6E7C5 /* MTKResourceTests-Info.plist */,
-			);
-			name = "Supporting Files";
 			sourceTree = "<group>";
 		};
 		5BADE2BF172A65FA00B6E7C5 /* Example */ = {
@@ -177,6 +187,7 @@
 			children = (
 				5BADE2C8172A65FA00B6E7C5 /* MTKResourceExampleAppDelegate.h */,
 				5BADE2C9172A65FA00B6E7C5 /* MTKResourceExampleAppDelegate.m */,
+				5B6D19A4177D7D9A00FA2E3E /* Resources */,
 				5BADE2C0172A65FA00B6E7C5 /* Supporting Files */,
 			);
 			path = Example;
@@ -295,6 +306,7 @@
 				5BADE2CC172A65FA00B6E7C5 /* Default.png in Resources */,
 				5BADE2CE172A65FA00B6E7C5 /* Default@2x.png in Resources */,
 				5BADE2D0172A65FA00B6E7C5 /* Default-568h@2x.png in Resources */,
+				5B6D19A6177D7DB900FA2E3E /* File.txt in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -509,6 +521,7 @@
 				5BADE2B2172A652D00B6E7C5 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		5BADE2B3172A652D00B6E7C5 /* Build configuration list for PBXNativeTarget "MTKResourceTests" */ = {
 			isa = XCConfigurationList;
@@ -517,6 +530,7 @@
 				5BADE2B5172A652D00B6E7C5 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		5BADE2D1172A65FA00B6E7C5 /* Build configuration list for PBXNativeTarget "MTKResourceExample" */ = {
 			isa = XCConfigurationList;
@@ -525,6 +539,7 @@
 				5BADE2D3172A65FA00B6E7C5 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};

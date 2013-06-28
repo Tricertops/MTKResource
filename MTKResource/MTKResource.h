@@ -11,6 +11,13 @@
 
 
 
+#define MTKResourceLog_Error(FORMAT...)     NSLog(@"MTKResource Error: "    FORMAT)
+#define MTKResourceLog_Warning(FORMAT...)   NSLog(@"MTKResource Warning: "  FORMAT)
+#define MTKResourceLog_Info(FORMAT...)      NSLog(@"MTKResource Info: "     FORMAT)
+#define MTKResourceLog_Debug(FORMAT...)     NSLog(@"MTKResource Debug: "    FORMAT)
+
+
+
 /**
  Hello, I am class designed to help you with loading any kind of resources in
  your apps. I handle different languages, devices and extensions, so you don't
