@@ -97,6 +97,14 @@
 - (NSString *)pathForFile:(NSString *)fileWithExtension;
 
 /**
+ Convenience method for `-pathForFile:`.
+ @code
+ MTKResource.Path(@"List.txt");
+ @endcode
+ */
++ (NSString *(^)(NSString *file))Path;
+
+/**
  Default directory path to be used by convenience methods.
  **/
 @property (nonatomic, readwrite, copy) NSString *defaultDirectory;
@@ -127,7 +135,7 @@
     MTKResource.String(@"key.of.the.string");
  @endcode
  */
-- (NSString *(^)(NSString *stringKey))String;
++ (NSString *(^)(NSString *stringKey))String;
 
 /**
  Default .strings file name without the extension.
@@ -175,7 +183,7 @@
     MTKResource.Image(@"key.for.the.image");
  @endcode
  */
-- (UIImage *(^)(NSString *imageKey))Image;
++ (UIImage *(^)(NSString *imageKey))Image;
 
 /**
  Prefix you use in whole project for image files.
@@ -226,7 +234,7 @@
     MTKResource.Object(@"key.for.the.object");
  @endcode
  */
-- (id(^)(NSString *objectKey))Object;
++ (id(^)(NSString *objectKey))Object;
 
 /**
  Prefix you use in whole project for image files.

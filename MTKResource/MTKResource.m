@@ -75,6 +75,8 @@
         }
     }
     
+    MTKResourceLog_Info(@"Using these suffixes: %@", [suffixes componentsJoinedByString:@", "]);
+    
     self.deviceSuffixes = suffixes;
 }
 
@@ -85,6 +87,7 @@
 #pragma mark Paths
 
 
+/// Used for printing paths so bundle path is ommited.
 - (NSString *)pathWithinBundle:(NSString *)path {
     NSString *bundlePath = [[NSBundle mainBundle] bundlePath];
     return [path stringByReplacingOccurrencesOfString:bundlePath withString:@""];
@@ -131,6 +134,13 @@
     NSString *file = [fileWithExtension stringByDeletingPathExtension];
     NSString *extension = [fileWithExtension pathExtension];
     return [self pathForFile:file directory:self.defaultDirectory extensions:@[extension]];
+}
+
+
++ (NSString *(^)(NSString *))Path {
+    return ^NSString *(NSString *file) {
+        return [[self shared] pathForFile:file];
+    };
 }
 
 
