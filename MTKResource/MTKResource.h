@@ -105,7 +105,7 @@
 + (NSString *(^)(NSString *file))Path;
 
 /**
- Default directory path to be used by convenience methods.
+ Default directory path to be used by convenience methods. Default is nil, that means bundle's root is searched.
  **/
 @property (nonatomic, readwrite, copy) NSString *defaultDirectory;
 

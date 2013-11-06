@@ -1,0 +1,9 @@
+/* 
+  MTKLocalizable.strings
+  MTKResource
+
+  Created by Martin Kiss on 6.11.13.
+  Copyright (c) 2013 iMartin Kiss. All rights reserved.
+*/
+
+"Resource.Message" = "Hello, Strings!";

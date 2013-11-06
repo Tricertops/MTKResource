@@ -25,6 +25,8 @@
 		5BADE2CE172A65FA00B6E7C5 /* Default@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 5BADE2CD172A65FA00B6E7C5 /* Default@2x.png */; };
 		5BADE2D0172A65FA00B6E7C5 /* Default-568h@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 5BADE2CF172A65FA00B6E7C5 /* Default-568h@2x.png */; };
 		5BADE2D6172A674D00B6E7C5 /* libMTKResource.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 5BADE28B172A652D00B6E7C5 /* libMTKResource.a */; };
+		5BBA7190182AA14700B3506E /* Prefix.Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = 5B28E912182A9FE8008D918B /* Prefix.Localizable.strings */; };
+		5BBA7192182AA1AA00B3506E /* Prefix.Resource.plist in Resources */ = {isa = PBXBuildFile; fileRef = 5BBA7191182AA19000B3506E /* Prefix.Resource.plist */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -58,6 +60,7 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
+		5B28E912182A9FE8008D918B /* Prefix.Localizable.strings */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.strings; path = Prefix.Localizable.strings; sourceTree = "<group>"; };
 		5B6D19A5177D7DB900FA2E3E /* File.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = File.txt; sourceTree = "<group>"; };
 		5BADE28B172A652D00B6E7C5 /* libMTKResource.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libMTKResource.a; sourceTree = BUILT_PRODUCTS_DIR; };
 		5BADE28E172A652D00B6E7C5 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
@@ -79,6 +82,7 @@
 		5BADE2CB172A65FA00B6E7C5 /* Default.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Default.png; sourceTree = "<group>"; };
 		5BADE2CD172A65FA00B6E7C5 /* Default@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Default@2x.png"; sourceTree = "<group>"; };
 		5BADE2CF172A65FA00B6E7C5 /* Default-568h@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Default-568h@2x.png"; sourceTree = "<group>"; };
+		5BBA7191182AA19000B3506E /* Prefix.Resource.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = Prefix.Resource.plist; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -126,6 +130,8 @@
 			isa = PBXGroup;
 			children = (
 				5B6D19A5177D7DB900FA2E3E /* File.txt */,
+				5B28E912182A9FE8008D918B /* Prefix.Localizable.strings */,
+				5BBA7191182AA19000B3506E /* Prefix.Resource.plist */,
 			);
 			path = Resources;
 			sourceTree = "<group>";
@@ -303,6 +309,8 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				5BBA7190182AA14700B3506E /* Prefix.Localizable.strings in Resources */,
+				5BBA7192182AA1AA00B3506E /* Prefix.Resource.plist in Resources */,
 				5BADE2CC172A65FA00B6E7C5 /* Default.png in Resources */,
 				5BADE2CE172A65FA00B6E7C5 /* Default@2x.png in Resources */,
 				5BADE2D0172A65FA00B6E7C5 /* Default-568h@2x.png in Resources */,

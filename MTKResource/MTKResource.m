@@ -50,6 +50,8 @@
     self = [super init];
     if (self) {
         [self loadDeviceSuffixes];
+        self.stringsDefaultTableName = @"Localizable";
+        self.stringsExtensions = @[ @"strings", @"plist" ];
     }
     return self;
 }
@@ -94,7 +96,6 @@
 }
 
 
-
 - (NSString *)bundlePathForFile:(NSString *)file extension:(NSString *)extension directory:(NSString *)directory {
     NSString *path = nil;
     if (self.language) {
@@ -106,7 +107,6 @@
     if ( ! path) MTKResourceLog_Debug(@"Path '%@/%@.%@' does not exist", directory ?: @"", file, extension);
     return path;
 }
-
 
 
 - (NSString *)pathForFile:(NSString *)file directory:(NSString *)directory extensions:(NSArray *)extensions {
@@ -140,6 +140,56 @@
 + (NSString *(^)(NSString *))Path {
     return ^NSString *(NSString *file) {
         return [[self shared] pathForFile:file];
+    };
+}
+
+
+
+
+
+#pragma mark Strings
+
+
+- (NSString *)pathForStringsTable:(NSString *)tableName {
+    if ( ! tableName.length) return nil;
+    NSString *dedicatedFile = [NSString stringWithFormat:@"%@%@", (self.stringsPrefix ?: @""), tableName];
+    return [self pathForFile:dedicatedFile directory:self.defaultDirectory extensions:self.stringsExtensions];
+}
+
+
+- (NSString *)stringForKey:(NSString *)stringKey {
+    if ( ! stringKey.length) return nil;
+    MTKResourceLog_Debug(@"Localizing string for key '%@'", stringKey);
+    
+    NSString *path = nil;
+    
+    NSArray *keyComponents = [stringKey componentsSeparatedByString:@"."];
+    if (keyComponents.count > 1) {
+        // Try dedicated table
+        path = [self pathForStringsTable:keyComponents.firstObject];
+        
+        if (path) {
+            // If exist, continue with the rest of the key
+            keyComponents = [keyComponents subarrayWithRange:NSMakeRange(1, keyComponents.count - 1)];
+            stringKey = [keyComponents componentsJoinedByString:@"."];
+        }
+    }
+    
+    if ( ! path) path = [self pathForStringsTable:self.stringsDefaultTableName];
+    
+    NSDictionary *table = [NSDictionary dictionaryWithContentsOfFile:path];
+    NSString *string = [table objectForKey:stringKey];
+    
+    if (string) MTKResourceLog_Info(@"String '%@' localized to '%@'", stringKey, string);
+    else MTKResourceLog_Warning(@"String not found '%@'", stringKey);
+    
+    return string;
+}
+
+
++ (NSString *(^)(NSString *))String {
+    return ^NSString *(NSString *stringKey) {
+        return [[self shared] stringForKey:stringKey];
     };
 }
 

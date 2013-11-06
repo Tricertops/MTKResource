@@ -26,6 +26,8 @@
     
     [[MTKResource shared] pathForFile:@"File" directory:nil extensions:@[@"data",@"txt"]];
     
+    MTKResource.shared.stringsPrefix = @"Prefix.";
+    MTKResource.String(@"Resource.Message");
     
     return YES;
 }
