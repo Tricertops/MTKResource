@@ -55,6 +55,8 @@
         self.stringsDefaultTableName = nil;
         self.stringsPrefix = nil;
         self.stringsExtensions = @[ @"strings", @"plist" ];
+        self.imagesPrefix = nil;
+        self.imagesExtensions = @[ @"png", @"jpg", @"jpeg" ];
     }
     return self;
 }
@@ -229,6 +231,39 @@
     self->_stringsExtensions = stringsExtensions ?: @[@""];
     MTKResourceLog_Info(@"Using strings extensions: '%@'", [self->_stringsExtensions componentsJoinedByString:@", "]);
 }
+
+
+
+
+
+#pragma mark Images
+
+
+- (UIImage *)imageForKey:(NSString *)imageKey {
+    NSString *dedicatedFile = [NSString stringWithFormat:@"%@%@", (self.imagesPrefix ?: @""), imageKey];
+    NSString *path = [self pathForFile:dedicatedFile directory:self.defaultDirectory extensions:self.imagesExtensions];
+    return [UIImage imageWithContentsOfFile:path];
+}
+
+
++ (UIImage *(^)(NSString *))Image {
+    return ^UIImage *(NSString *imageKey) {
+        return [[self shared] imageForKey:imageKey];
+    };
+}
+
+
+- (void)setImagesPrefix:(NSString *)imagesPrefix {
+    self->_imagesPrefix = imagesPrefix ?: @"";
+    MTKResourceLog_Info(@"Using images prefix: '%@'", self->_imagesPrefix);
+}
+
+
+- (void)setImagesExtensions:(NSArray *)imagesExtensions {
+    self->_imagesExtensions = imagesExtensions ?: @[@""];
+    MTKResourceLog_Info(@"Using images extensions: '%@'", [self->_imagesExtensions componentsJoinedByString:@", "]);
+}
+
 
 
 

@@ -29,6 +29,9 @@
     MTKResource.shared.stringsPrefix = @"Prefix.";
     MTKResource.String(@"Resource.Message");
     
+    MTKResource.shared.imagesPrefix = @"Image.";
+    MTKResource.Image(@"Square");
+    
     return YES;
 }
 

@@ -189,17 +189,17 @@
  Prefix you use in whole project for image files.
  File name pattern: <imagePrefix><imageKey><deviceSuffixes>.<extensions>
  */
-@property (nonatomic, readwrite, copy) NSString *imagePrefix;
+@property (nonatomic, readwrite, copy) NSString *imagesPrefix;
 
 /**
  Array of all image extensions to be searched when asked for `-imageForKey:`.
  File name comparisions are case insensitive.
- Default: [ "png", "jpg", "jpeg", "jp2" ]
+ Default: [ "png", "jpg", "jpeg" ]
  
  You shouldn't have multiple images with the same file name and different extension,
  like "button.png" and "button.jpg".
  */
-@property (nonatomic, readwrite, copy) NSArray *imageExtensions;
+@property (nonatomic, readwrite, copy) NSArray *imagesExtensions;
 
 
 
