@@ -24,6 +24,17 @@
     self.window.backgroundColor = [UIColor blackColor];
     [self.window makeKeyAndVisible];
     
+//    NSArray *array = @[@"a",@"b",@"c",@"d",@"f",@"g"];
+//    
+//    NSMutableData *archive = [[NSMutableData alloc] init];
+//    NSKeyedArchiver *archiver = [[NSKeyedArchiver alloc] initForWritingWithMutableData:archive];
+//    archiver.outputFormat = NSPropertyListXMLFormat_v1_0;
+//    [archiver encodeRootObject:array];
+//    [archiver finishEncoding];
+//    [archive writeToFile:@"/Users/Martin/Desktop/archive.plist" atomically:YES];
+    
+    
+    
     [[MTKResource shared] pathForFile:@"File" directory:nil extensions:@[@"data",@"txt"]];
     
     MTKResource.shared.stringsPrefix = @"Prefix.";
@@ -31,6 +42,9 @@
     
     MTKResource.shared.imagesPrefix = @"Image.";
     MTKResource.Image(@"Square");
+    
+    MTKResource.shared.objectsPrefix = @"Object.";
+    MTKResource.Object(@"JSON");
     
     return YES;
 }

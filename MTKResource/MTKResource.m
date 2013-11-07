@@ -57,6 +57,8 @@
         self.stringsExtensions = @[ @"strings", @"plist" ];
         self.imagesPrefix = nil;
         self.imagesExtensions = @[ @"png", @"jpg", @"jpeg" ];
+        self.objectsPrefix = nil;
+        self.objectsExtensions = @[ @"plist", @"json" ];
     }
     return self;
 }
@@ -173,8 +175,8 @@
 
 - (NSString *)pathForStringsTable:(NSString *)tableName {
     if ( ! tableName.length) return nil;
-    NSString *dedicatedFile = [NSString stringWithFormat:@"%@%@", (self.stringsPrefix ?: @""), tableName];
-    return [self pathForFile:dedicatedFile directory:self.defaultDirectory extensions:self.stringsExtensions];
+    NSString *file = [NSString stringWithFormat:@"%@%@", (self.stringsPrefix ?: @""), tableName];
+    return [self pathForFile:file directory:self.defaultDirectory extensions:self.stringsExtensions];
 }
 
 
@@ -240,8 +242,8 @@
 
 
 - (UIImage *)imageForKey:(NSString *)imageKey {
-    NSString *dedicatedFile = [NSString stringWithFormat:@"%@%@", (self.imagesPrefix ?: @""), imageKey];
-    NSString *path = [self pathForFile:dedicatedFile directory:self.defaultDirectory extensions:self.imagesExtensions];
+    NSString *file = [NSString stringWithFormat:@"%@%@", (self.imagesPrefix ?: @""), imageKey];
+    NSString *path = [self pathForFile:file directory:self.defaultDirectory extensions:self.imagesExtensions];
     return [UIImage imageWithContentsOfFile:path];
 }
 
@@ -264,6 +266,87 @@
     MTKResourceLog_Info(@"Using images extensions: '%@'", [self->_imagesExtensions componentsJoinedByString:@", "]);
 }
 
+
+
+
+
+#pragma mark Objects
+
+/**
+ Loads "some object" from file. Can be used for loading .plist, .json, custom
+ archives (using NSCoding).
+ 
+ @param objectKey Base of the file name without extension, prefixes and so on.
+ 
+ Searches for this file name pattern:
+ <objectPrefix><objectKey><deviceSuffixes>.<extensions>
+ 
+ This method supports loading of Property Lists, JSON files, NSKeyedArchiver
+ files.
+ 
+ Example: If you ask for "VideoPresets" object, this method searches for
+ "VideoPresets.plist", "VideoPresets.json" (and so on, based on the allowed
+ extensions) and loads the first found using appropriate deserializer. Returns
+ whatever it loaded, in this case it may be NSArray from the plist.
+ 
+ TODO: make it extensible.
+ */
+- (id)objectForKey:(NSString *)objectKey {
+    NSString *file = [NSString stringWithFormat:@"%@%@", (self.objectsPrefix ?: @""), objectKey];
+    NSString *path = [self pathForFile:file directory:self.defaultDirectory extensions:self.objectsExtensions];
+    NSData *data = [NSData dataWithContentsOfFile:path];
+    
+    if ( ! data) return nil;
+    
+    NSError *error = nil;
+    id object = nil;
+    
+    // Keyed Unarchivation
+    @try {
+        object = [NSKeyedUnarchiver unarchiveObjectWithData:data];
+        if (object) MTKResourceLog_Info(@"Object '%@' unarchived", objectKey);
+    }
+    @catch (NSException *exception) {
+        MTKResourceLog_Debug(@"Keyed Unarchivation failed for '%@'", objectKey);
+    }
+    
+    // Property List
+    if ( ! object) {
+        error = nil;
+        object = [NSPropertyListSerialization propertyListWithData:data options:NSPropertyListImmutable format:nil error:&error];
+        if (object) MTKResourceLog_Info(@"Object '%@' deserialized from Property List", objectKey);
+        else MTKResourceLog_Debug(@"Property List deserialization failed for '%@'", objectKey);
+    }
+    
+    // JSON
+    if ( ! object) {
+        error = nil;
+        object = [NSJSONSerialization JSONObjectWithData:data options:kNilOptions error:&error];
+        if (object) MTKResourceLog_Info(@"Object '%@' deserialized from JSON", objectKey);
+        else MTKResourceLog_Debug(@"JSON deserialization failed for '%@'", objectKey);
+    }
+    
+    return object;
+}
+
+
++ (id(^)(NSString *objectKey))Object {
+    return ^id(NSString *objectKey) {
+        return [[self shared] objectForKey:objectKey];
+    };
+}
+
+
+- (void)setObjectsPrefix:(NSString *)objectsPrefix {
+    self->_objectsPrefix = objectsPrefix ?: @"";
+    MTKResourceLog_Info(@"Using objects prefix: '%@'", self->_objectsPrefix);
+}
+
+
+- (void)setObjectsExtensions:(NSArray *)objectsExtensions {
+    self->_objectsExtensions = objectsExtensions ?: @[@""];
+    MTKResourceLog_Info(@"Using objects extensions: '%@'", [self->_objectsExtensions componentsJoinedByString:@", "]);
+}
 
 
 

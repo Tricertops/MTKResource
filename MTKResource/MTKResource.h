@@ -229,7 +229,7 @@
 - (id)objectForKey:(NSString *)objectKey;
 
 /**
- Convenience method for `-imageForKey:`.
+ Convenience method for `-objectForKey:`.
  @code
     MTKResource.Object(@"key.for.the.object");
  @endcode
@@ -240,7 +240,7 @@
  Prefix you use in whole project for image files.
  File name pattern: <imagePrefix><imageKey><deviceSuffixes>.<extensions>
  */
-@property (nonatomic, readwrite, copy) NSString *objectPrefix;
+@property (nonatomic, readwrite, copy) NSString *objectsPrefix;
 
 /**
  Array of all extensions to be searched when asked for `-objectForKey:`. If you
@@ -248,7 +248,7 @@
  approapriately.
  Default: [ "plist", "json" ]
  */
-@property (nonatomic, readwrite, copy) NSArray *objectExtensions;
+@property (nonatomic, readwrite, copy) NSArray *objectsExtensions;
 
 
 
