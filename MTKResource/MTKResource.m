@@ -49,8 +49,11 @@
 - (instancetype)init {
     self = [super init];
     if (self) {
+        self.language = nil;
         [self loadDeviceSuffixes];
-        self.stringsDefaultTableName = @"Localizable";
+        self.defaultDirectory = nil;
+        self.stringsDefaultTableName = nil;
+        self.stringsPrefix = nil;
         self.stringsExtensions = @[ @"strings", @"plist" ];
     }
     return self;
@@ -77,9 +80,19 @@
         }
     }
     
-    MTKResourceLog_Info(@"Using these suffixes: %@", [suffixes componentsJoinedByString:@", "]);
-    
     self.deviceSuffixes = suffixes;
+}
+
+
+- (void)setDeviceSuffixes:(NSArray *)deviceSuffixes {
+    self->_deviceSuffixes = deviceSuffixes ?: @[@""];
+    MTKResourceLog_Info(@"Using device suffixes: '%@'", [self->_deviceSuffixes componentsJoinedByString:@", "]);
+}
+
+
+- (void)setLanguage:(NSString *)language {
+    self->_language = language;
+    MTKResourceLog_Info(@"Using language: '%@'", self->_language ?: @"(system)");
 }
 
 
@@ -104,7 +117,7 @@
     else {
         path = [[NSBundle mainBundle] pathForResource:file ofType:extension inDirectory:directory];
     }
-    if ( ! path) MTKResourceLog_Debug(@"Path '%@/%@.%@' does not exist", directory ?: @"", file, extension);
+    if ( ! path) MTKResourceLog_Debug(@"Path does not exist: '%@/%@.%@'", directory ?: @"", file, extension);
     return path;
 }
 
@@ -112,7 +125,7 @@
 - (NSString *)pathForFile:(NSString *)file directory:(NSString *)directory extensions:(NSArray *)extensions {
     NSString *path = nil;
     
-    MTKResourceLog_Debug(@"Finding path for file '%@' in directory '%@' with extensions '%@'", file, directory ?: @"/", [extensions componentsJoinedByString:@","]);
+    MTKResourceLog_Debug(@"Finding path for file '%@' in directory '%@' with extensions '%@'", file, directory ?: @"/", [extensions componentsJoinedByString:@", "]);
     
     for (NSString *suffix in self.deviceSuffixes) {
         NSString *fullFilename = [NSString stringWithFormat:@"%@%@", file, suffix];
@@ -123,8 +136,8 @@
         if (path) break;
     }
     
-    if (path) MTKResourceLog_Info(@"File '%@' found path '%@'", file, [self pathWithinBundle:path]);
-    else MTKResourceLog_Warning(@"File not found '%@'", file);
+    if (path) MTKResourceLog_Info(@"File '%@' found at path '%@'", file, [self pathWithinBundle:path]);
+    else MTKResourceLog_Warning(@"File not found: '%@'", file);
     
     return path;
 }
@@ -141,6 +154,12 @@
     return ^NSString *(NSString *file) {
         return [[self shared] pathForFile:file];
     };
+}
+
+
+- (void)setDefaultDirectory:(NSString *)defaultDirectory {
+    self->_defaultDirectory = defaultDirectory;
+    MTKResourceLog_Info(@"Using default directory: '%@'", self->_defaultDirectory ?: @"(root)");
 }
 
 
@@ -191,6 +210,24 @@
     return ^NSString *(NSString *stringKey) {
         return [[self shared] stringForKey:stringKey];
     };
+}
+
+
+- (void)setStringsDefaultTableName:(NSString *)stringsDefaultTableName {
+    self->_stringsDefaultTableName = stringsDefaultTableName ?: @"Localizable";
+    MTKResourceLog_Info(@"Using strings default table name: '%@'", self->_stringsDefaultTableName);
+}
+
+
+- (void)setStringsPrefix:(NSString *)stringsPrefix {
+    self->_stringsPrefix = stringsPrefix;
+    MTKResourceLog_Info(@"Using strings prefix: '%@'", self->_stringsPrefix ?: @"(none)");
+}
+
+
+- (void)setStringsExtensions:(NSArray *)stringsExtensions {
+    self->_stringsExtensions = stringsExtensions ?: @[@""];
+    MTKResourceLog_Info(@"Using strings extensions: '%@'", [self->_stringsExtensions componentsJoinedByString:@", "]);
 }
 
 
