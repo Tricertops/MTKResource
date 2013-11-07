@@ -242,6 +242,7 @@
 
 
 - (UIImage *)imageForKey:(NSString *)imageKey {
+    if ( ! imageKey) return nil;
     NSString *file = [NSString stringWithFormat:@"%@%@", (self.imagesPrefix ?: @""), imageKey];
     NSString *path = [self pathForFile:file directory:self.defaultDirectory extensions:self.imagesExtensions];
     return [UIImage imageWithContentsOfFile:path];
@@ -272,61 +273,46 @@
 
 #pragma mark Objects
 
-/**
- Loads "some object" from file. Can be used for loading .plist, .json, custom
- archives (using NSCoding).
- 
- @param objectKey Base of the file name without extension, prefixes and so on.
- 
- Searches for this file name pattern:
- <objectPrefix><objectKey><deviceSuffixes>.<extensions>
- 
- This method supports loading of Property Lists, JSON files, NSKeyedArchiver
- files.
- 
- Example: If you ask for "VideoPresets" object, this method searches for
- "VideoPresets.plist", "VideoPresets.json" (and so on, based on the allowed
- extensions) and loads the first found using appropriate deserializer. Returns
- whatever it loaded, in this case it may be NSArray from the plist.
- 
- TODO: make it extensible.
- */
-- (id)objectForKey:(NSString *)objectKey {
-    NSString *file = [NSString stringWithFormat:@"%@%@", (self.objectsPrefix ?: @""), objectKey];
-    NSString *path = [self pathForFile:file directory:self.defaultDirectory extensions:self.objectsExtensions];
-    NSData *data = [NSData dataWithContentsOfFile:path];
+
+- (id)objectDeserializedFromPropertyListData:(NSData *)data objectKey:(NSString *)objectKey {
+    id object = [NSPropertyListSerialization propertyListWithData:data options:NSPropertyListImmutable format:nil error:nil];
     
-    if ( ! data) return nil;
-    
-    NSError *error = nil;
-    id object = nil;
-    
-    // Keyed Unarchivation
-    @try {
+    if ([object isKindOfClass:NSDictionary.class] && [object valueForKey:@"$archiver"] && [object valueForKey:@"$version"]) {
+        // Keyed Unarchiver
         object = [NSKeyedUnarchiver unarchiveObjectWithData:data];
         if (object) MTKResourceLog_Info(@"Object '%@' unarchived", objectKey);
+        else MTKResourceLog_Debug(@"Keyed Unarchivation failed for '%@'", objectKey);
     }
-    @catch (NSException *exception) {
-        MTKResourceLog_Debug(@"Keyed Unarchivation failed for '%@'", objectKey);
-    }
-    
-    // Property List
-    if ( ! object) {
-        error = nil;
-        object = [NSPropertyListSerialization propertyListWithData:data options:NSPropertyListImmutable format:nil error:&error];
+    else {
+        // Plain Property List
         if (object) MTKResourceLog_Info(@"Object '%@' deserialized from Property List", objectKey);
         else MTKResourceLog_Debug(@"Property List deserialization failed for '%@'", objectKey);
     }
     
-    // JSON
-    if ( ! object) {
-        error = nil;
-        object = [NSJSONSerialization JSONObjectWithData:data options:kNilOptions error:&error];
-        if (object) MTKResourceLog_Info(@"Object '%@' deserialized from JSON", objectKey);
-        else MTKResourceLog_Debug(@"JSON deserialization failed for '%@'", objectKey);
-    }
+    return object;
+}
+
+
+- (id)objectDeserializedFromJSONData:(NSData *)data objectKey:(NSString *)objectKey {
+    id object = [NSJSONSerialization JSONObjectWithData:data options:kNilOptions error:nil];
+    
+    if (object) MTKResourceLog_Info(@"Object '%@' deserialized from JSON", objectKey);
+    else MTKResourceLog_Debug(@"JSON deserialization failed for '%@'", objectKey);
     
     return object;
+}
+
+
+- (id)objectForKey:(NSString *)objectKey {
+    if ( ! objectKey) return nil;
+    
+    NSString *file = [NSString stringWithFormat:@"%@%@", (self.objectsPrefix ?: @""), objectKey];
+    NSString *path = [self pathForFile:file directory:self.defaultDirectory extensions:self.objectsExtensions];
+    NSData *data = [NSData dataWithContentsOfFile:path];
+    if ( ! data) return nil;
+    
+    return (   [self objectDeserializedFromJSONData:data objectKey:objectKey]
+            ?: [self objectDeserializedFromPropertyListData:data objectKey:objectKey] );
 }
 
 

@@ -24,11 +24,12 @@
     self.window.backgroundColor = [UIColor blackColor];
     [self.window makeKeyAndVisible];
     
-//    NSArray *array = @[@"a",@"b",@"c",@"d",@"f",@"g"];
-//    
+    NSArray *array = @[@"a1",@"b2",@"c3",@"d4",@"f5",@"g6"];
+    [NSKeyedArchiver archiveRootObject:array toFile:@"/Users/Martin/Development/Objective-C/MTKResource/Example/Resources/Object.XMLArchive.plist"];
+    
 //    NSMutableData *archive = [[NSMutableData alloc] init];
 //    NSKeyedArchiver *archiver = [[NSKeyedArchiver alloc] initForWritingWithMutableData:archive];
-//    archiver.outputFormat = NSPropertyListXMLFormat_v1_0;
+//    archiver.outputFormat = NSPropertyListBinaryFormat_v1_0;
 //    [archiver encodeRootObject:array];
 //    [archiver finishEncoding];
 //    [archive writeToFile:@"/Users/Martin/Desktop/archive.plist" atomically:YES];
@@ -44,7 +45,7 @@
     MTKResource.Image(@"Square");
     
     MTKResource.shared.objectsPrefix = @"Object.";
-    MTKResource.Object(@"JSON");
+    MTKResource.Object(@"XMLArchive");
     
     return YES;
 }
