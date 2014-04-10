@@ -69,9 +69,9 @@
     NSArray *idioms = ( iPhone ? @[@"~iphone", @""] : @[@"~ipad", @""] );
     NSArray *scales = ( retina ? @[@"@2x", @""] : @[@"", @"@2x"] );
     
-    for (NSString *height in heights) {
+    for (NSString *scale in scales) {
         for (NSString *idiom in idioms) {
-            for (NSString *scale in scales) {
+            for (NSString *height in heights) {
                 NSString *suffix = [NSString stringWithFormat:@"%@%@%@", height, scale, idiom];
                 [suffixes addObject:suffix];
             }
