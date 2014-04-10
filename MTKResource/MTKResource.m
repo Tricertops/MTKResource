@@ -49,15 +49,9 @@
 - (instancetype)init {
     self = [super init];
     if (self) {
-        self.language = nil;
         [self loadDeviceSuffixes];
-        self.defaultDirectory = nil;
-        self.stringsDefaultTableName = nil;
-        self.stringsPrefix = nil;
         self.stringsExtensions = @[ @"strings", @"plist" ];
-        self.imagesPrefix = nil;
         self.imagesExtensions = @[ @"png", @"jpg", @"jpeg" ];
-        self.objectsPrefix = nil;
         self.objectsExtensions = @[ @"plist", @"json" ];
     }
     return self;
@@ -140,7 +134,7 @@
         if (path) break;
     }
     
-    if (path) MTKResourceLog_Info(@"File '%@' found at path '%@'", file, [self pathWithinBundle:path]);
+    if (path) MTKResourceLog_Debug(@"File '%@' found at path '%@'", file, [self pathWithinBundle:path]);
     else MTKResourceLog_Warning(@"File not found: '%@'", file);
     
     return path;
@@ -203,7 +197,7 @@
     NSDictionary *table = [NSDictionary dictionaryWithContentsOfFile:path];
     NSString *string = [table objectForKey:stringKey];
     
-    if (string) MTKResourceLog_Info(@"String '%@' localized to '%@'", stringKey, string);
+    if (string) MTKResourceLog_Debug(@"String '%@' localized to '%@'", stringKey, string);
     else MTKResourceLog_Warning(@"String not found '%@'", stringKey);
     
     return string;
@@ -280,12 +274,12 @@
     if ([object isKindOfClass:NSDictionary.class] && [object valueForKey:@"$archiver"] && [object valueForKey:@"$version"]) {
         // Keyed Unarchiver
         object = [NSKeyedUnarchiver unarchiveObjectWithData:data];
-        if (object) MTKResourceLog_Info(@"Object '%@' unarchived", objectKey);
+        if (object) MTKResourceLog_Debug(@"Object '%@' unarchived", objectKey);
         else MTKResourceLog_Debug(@"Keyed Unarchivation failed for '%@'", objectKey);
     }
     else {
         // Plain Property List
-        if (object) MTKResourceLog_Info(@"Object '%@' deserialized from Property List", objectKey);
+        if (object) MTKResourceLog_Debug(@"Object '%@' deserialized from Property List", objectKey);
         else MTKResourceLog_Debug(@"Property List deserialization failed for '%@'", objectKey);
     }
     
@@ -296,7 +290,7 @@
 - (id)objectDeserializedFromJSONData:(NSData *)data objectKey:(NSString *)objectKey {
     id object = [NSJSONSerialization JSONObjectWithData:data options:kNilOptions error:nil];
     
-    if (object) MTKResourceLog_Info(@"Object '%@' deserialized from JSON", objectKey);
+    if (object) MTKResourceLog_Debug(@"Object '%@' deserialized from JSON", objectKey);
     else MTKResourceLog_Debug(@"JSON deserialization failed for '%@'", objectKey);
     
     return object;

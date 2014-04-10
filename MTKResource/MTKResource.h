@@ -14,7 +14,7 @@
 #define MTKResourceLog_Error(FORMAT...)     NSLog(@"MTKResource Error: "    FORMAT)
 #define MTKResourceLog_Warning(FORMAT...)   NSLog(@"MTKResource Warning: "  FORMAT)
 #define MTKResourceLog_Info(FORMAT...)      NSLog(@"MTKResource Info: "     FORMAT)
-#define MTKResourceLog_Debug(FORMAT...)     NSLog(@"MTKResource Debug: "    FORMAT)
+#define MTKResourceLog_Debug(FORMAT...)     //NSLog(@"MTKResource Debug: "    FORMAT)
 
 
 
