@@ -12,17 +12,8 @@
 		5B0B5D36182BAC7400A0B235 /* Object.PropertyList.plist in Resources */ = {isa = PBXBuildFile; fileRef = 5B0B5D35182BAC7400A0B235 /* Object.PropertyList.plist */; };
 		5B0B5D38182BACE900A0B235 /* Object.JSON.json in Resources */ = {isa = PBXBuildFile; fileRef = 5B0B5D37182BACE900A0B235 /* Object.JSON.json */; };
 		5B6D19A6177D7DB900FA2E3E /* File.txt in Resources */ = {isa = PBXBuildFile; fileRef = 5B6D19A5177D7DB900FA2E3E /* File.txt */; };
-		5BADE28F172A652D00B6E7C5 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5BADE28E172A652D00B6E7C5 /* Foundation.framework */; };
 		5BADE294172A652D00B6E7C5 /* MTKResource.h in CopyFiles */ = {isa = PBXBuildFile; fileRef = 5BADE293172A652D00B6E7C5 /* MTKResource.h */; };
 		5BADE296172A652D00B6E7C5 /* MTKResource.m in Sources */ = {isa = PBXBuildFile; fileRef = 5BADE295172A652D00B6E7C5 /* MTKResource.m */; };
-		5BADE29E172A652D00B6E7C5 /* SenTestingKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5BADE29D172A652D00B6E7C5 /* SenTestingKit.framework */; };
-		5BADE2A0172A652D00B6E7C5 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5BADE29F172A652D00B6E7C5 /* UIKit.framework */; };
-		5BADE2A1172A652D00B6E7C5 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5BADE28E172A652D00B6E7C5 /* Foundation.framework */; };
-		5BADE2A4172A652D00B6E7C5 /* libMTKResource.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 5BADE28B172A652D00B6E7C5 /* libMTKResource.a */; };
-		5BADE2AD172A652D00B6E7C5 /* MTKResourceTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 5BADE2AC172A652D00B6E7C5 /* MTKResourceTests.m */; };
-		5BADE2BB172A65FA00B6E7C5 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5BADE29F172A652D00B6E7C5 /* UIKit.framework */; };
-		5BADE2BC172A65FA00B6E7C5 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5BADE28E172A652D00B6E7C5 /* Foundation.framework */; };
-		5BADE2BE172A65FA00B6E7C5 /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5BADE2BD172A65FA00B6E7C5 /* CoreGraphics.framework */; };
 		5BADE2C6172A65FA00B6E7C5 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 5BADE2C5172A65FA00B6E7C5 /* main.m */; };
 		5BADE2CA172A65FA00B6E7C5 /* MTKResourceExampleAppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 5BADE2C9172A65FA00B6E7C5 /* MTKResourceExampleAppDelegate.m */; };
 		5BADE2CC172A65FA00B6E7C5 /* Default.png in Resources */ = {isa = PBXBuildFile; fileRef = 5BADE2CB172A65FA00B6E7C5 /* Default.png */; };
@@ -34,13 +25,6 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
-		5BADE2A2172A652D00B6E7C5 /* PBXContainerItemProxy */ = {
-			isa = PBXContainerItemProxy;
-			containerPortal = 5BADE283172A652D00B6E7C5 /* Project object */;
-			proxyType = 1;
-			remoteGlobalIDString = 5BADE28A172A652D00B6E7C5;
-			remoteInfo = MTKResource;
-		};
 		5BADE2D4172A674800B6E7C5 /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
 			containerPortal = 5BADE283172A652D00B6E7C5 /* Project object */;
@@ -71,17 +55,9 @@
 		5B28E912182A9FE8008D918B /* Prefix.Localizable.strings */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.strings; path = Prefix.Localizable.strings; sourceTree = "<group>"; };
 		5B6D19A5177D7DB900FA2E3E /* File.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = File.txt; sourceTree = "<group>"; };
 		5BADE28B172A652D00B6E7C5 /* libMTKResource.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libMTKResource.a; sourceTree = BUILT_PRODUCTS_DIR; };
-		5BADE28E172A652D00B6E7C5 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
 		5BADE293172A652D00B6E7C5 /* MTKResource.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = MTKResource.h; sourceTree = "<group>"; };
 		5BADE295172A652D00B6E7C5 /* MTKResource.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = MTKResource.m; sourceTree = "<group>"; };
-		5BADE29C172A652D00B6E7C5 /* MTKResourceTests.octest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = MTKResourceTests.octest; sourceTree = BUILT_PRODUCTS_DIR; };
-		5BADE29D172A652D00B6E7C5 /* SenTestingKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SenTestingKit.framework; path = Library/Frameworks/SenTestingKit.framework; sourceTree = DEVELOPER_DIR; };
-		5BADE29F172A652D00B6E7C5 /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = Library/Frameworks/UIKit.framework; sourceTree = DEVELOPER_DIR; };
-		5BADE2A7172A652D00B6E7C5 /* MTKResourceTests-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "MTKResourceTests-Info.plist"; sourceTree = "<group>"; };
-		5BADE2AB172A652D00B6E7C5 /* MTKResourceTests.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = MTKResourceTests.h; sourceTree = "<group>"; };
-		5BADE2AC172A652D00B6E7C5 /* MTKResourceTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = MTKResourceTests.m; sourceTree = "<group>"; };
 		5BADE2BA172A65FA00B6E7C5 /* MTKResourceExample.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = MTKResourceExample.app; sourceTree = BUILT_PRODUCTS_DIR; };
-		5BADE2BD172A65FA00B6E7C5 /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
 		5BADE2C1172A65FA00B6E7C5 /* MTKResourceExample-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "MTKResourceExample-Info.plist"; sourceTree = "<group>"; };
 		5BADE2C5172A65FA00B6E7C5 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
 		5BADE2C7172A65FA00B6E7C5 /* MTKResourceExample-Prefix.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "MTKResourceExample-Prefix.pch"; sourceTree = "<group>"; };
@@ -98,18 +74,6 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				5BADE28F172A652D00B6E7C5 /* Foundation.framework in Frameworks */,
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
-		5BADE298172A652D00B6E7C5 /* Frameworks */ = {
-			isa = PBXFrameworksBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-				5BADE29E172A652D00B6E7C5 /* SenTestingKit.framework in Frameworks */,
-				5BADE2A0172A652D00B6E7C5 /* UIKit.framework in Frameworks */,
-				5BADE2A1172A652D00B6E7C5 /* Foundation.framework in Frameworks */,
-				5BADE2A4172A652D00B6E7C5 /* libMTKResource.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -117,9 +81,6 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				5BADE2BC172A65FA00B6E7C5 /* Foundation.framework in Frameworks */,
-				5BADE2BB172A65FA00B6E7C5 /* UIKit.framework in Frameworks */,
-				5BADE2BE172A65FA00B6E7C5 /* CoreGraphics.framework in Frameworks */,
 				5BADE2D6172A674D00B6E7C5 /* libMTKResource.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -127,13 +88,6 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
-		5B6D19A3177D7CE000FA2E3E /* Resources */ = {
-			isa = PBXGroup;
-			children = (
-			);
-			path = Resources;
-			sourceTree = "<group>";
-		};
 		5B6D19A4177D7D9A00FA2E3E /* Resources */ = {
 			isa = PBXGroup;
 			children = (
@@ -152,9 +106,7 @@
 			isa = PBXGroup;
 			children = (
 				5BADE290172A652D00B6E7C5 /* MTKResource */,
-				5BADE2A5172A652D00B6E7C5 /* Tests */,
 				5BADE2BF172A65FA00B6E7C5 /* Example */,
-				5BADE28D172A652D00B6E7C5 /* Frameworks */,
 				5BADE28C172A652D00B6E7C5 /* Products */,
 			);
 			sourceTree = "<group>";
@@ -163,21 +115,9 @@
 			isa = PBXGroup;
 			children = (
 				5BADE28B172A652D00B6E7C5 /* libMTKResource.a */,
-				5BADE29C172A652D00B6E7C5 /* MTKResourceTests.octest */,
 				5BADE2BA172A65FA00B6E7C5 /* MTKResourceExample.app */,
 			);
 			name = Products;
-			sourceTree = "<group>";
-		};
-		5BADE28D172A652D00B6E7C5 /* Frameworks */ = {
-			isa = PBXGroup;
-			children = (
-				5BADE28E172A652D00B6E7C5 /* Foundation.framework */,
-				5BADE29F172A652D00B6E7C5 /* UIKit.framework */,
-				5BADE2BD172A65FA00B6E7C5 /* CoreGraphics.framework */,
-				5BADE29D172A652D00B6E7C5 /* SenTestingKit.framework */,
-			);
-			name = Frameworks;
 			sourceTree = "<group>";
 		};
 		5BADE290172A652D00B6E7C5 /* MTKResource */ = {
@@ -187,17 +127,6 @@
 				5BADE295172A652D00B6E7C5 /* MTKResource.m */,
 			);
 			path = MTKResource;
-			sourceTree = "<group>";
-		};
-		5BADE2A5172A652D00B6E7C5 /* Tests */ = {
-			isa = PBXGroup;
-			children = (
-				5BADE2A7172A652D00B6E7C5 /* MTKResourceTests-Info.plist */,
-				5BADE2AB172A652D00B6E7C5 /* MTKResourceTests.h */,
-				5BADE2AC172A652D00B6E7C5 /* MTKResourceTests.m */,
-				5B6D19A3177D7CE000FA2E3E /* Resources */,
-			);
-			path = Tests;
 			sourceTree = "<group>";
 		};
 		5BADE2BF172A65FA00B6E7C5 /* Example */ = {
@@ -244,25 +173,6 @@
 			productReference = 5BADE28B172A652D00B6E7C5 /* libMTKResource.a */;
 			productType = "com.apple.product-type.library.static";
 		};
-		5BADE29B172A652D00B6E7C5 /* MTKResourceTests */ = {
-			isa = PBXNativeTarget;
-			buildConfigurationList = 5BADE2B3172A652D00B6E7C5 /* Build configuration list for PBXNativeTarget "MTKResourceTests" */;
-			buildPhases = (
-				5BADE297172A652D00B6E7C5 /* Sources */,
-				5BADE298172A652D00B6E7C5 /* Frameworks */,
-				5BADE299172A652D00B6E7C5 /* Resources */,
-				5BADE29A172A652D00B6E7C5 /* ShellScript */,
-			);
-			buildRules = (
-			);
-			dependencies = (
-				5BADE2A3172A652D00B6E7C5 /* PBXTargetDependency */,
-			);
-			name = MTKResourceTests;
-			productName = MTKResourceTests;
-			productReference = 5BADE29C172A652D00B6E7C5 /* MTKResourceTests.octest */;
-			productType = "com.apple.product-type.bundle";
-		};
 		5BADE2B9172A65FA00B6E7C5 /* MTKResourceExample */ = {
 			isa = PBXNativeTarget;
 			buildConfigurationList = 5BADE2D1172A65FA00B6E7C5 /* Build configuration list for PBXNativeTarget "MTKResourceExample" */;
@@ -304,20 +214,12 @@
 			projectRoot = "";
 			targets = (
 				5BADE28A172A652D00B6E7C5 /* MTKResource */,
-				5BADE29B172A652D00B6E7C5 /* MTKResourceTests */,
 				5BADE2B9172A65FA00B6E7C5 /* MTKResourceExample */,
 			);
 		};
 /* End PBXProject section */
 
 /* Begin PBXResourcesBuildPhase section */
-		5BADE299172A652D00B6E7C5 /* Resources */ = {
-			isa = PBXResourcesBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
 		5BADE2B8172A65FA00B6E7C5 /* Resources */ = {
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
@@ -337,36 +239,12 @@
 		};
 /* End PBXResourcesBuildPhase section */
 
-/* Begin PBXShellScriptBuildPhase section */
-		5BADE29A172A652D00B6E7C5 /* ShellScript */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputPaths = (
-			);
-			outputPaths = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "# Run the unit tests in this test bundle.\n\"${SYSTEM_DEVELOPER_DIR}/Tools/RunUnitTests\"\n";
-		};
-/* End PBXShellScriptBuildPhase section */
-
 /* Begin PBXSourcesBuildPhase section */
 		5BADE287172A652D00B6E7C5 /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
 				5BADE296172A652D00B6E7C5 /* MTKResource.m in Sources */,
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
-		5BADE297172A652D00B6E7C5 /* Sources */ = {
-			isa = PBXSourcesBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-				5BADE2AD172A652D00B6E7C5 /* MTKResourceTests.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -382,11 +260,6 @@
 /* End PBXSourcesBuildPhase section */
 
 /* Begin PBXTargetDependency section */
-		5BADE2A3172A652D00B6E7C5 /* PBXTargetDependency */ = {
-			isa = PBXTargetDependency;
-			target = 5BADE28A172A652D00B6E7C5 /* MTKResource */;
-			targetProxy = 5BADE2A2172A652D00B6E7C5 /* PBXContainerItemProxy */;
-		};
 		5BADE2D5172A674800B6E7C5 /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
 			target = 5BADE28A172A652D00B6E7C5 /* MTKResource */;
@@ -486,32 +359,6 @@
 			};
 			name = Release;
 		};
-		5BADE2B4172A652D00B6E7C5 /* Debug */ = {
-			isa = XCBuildConfiguration;
-			buildSettings = {
-				FRAMEWORK_SEARCH_PATHS = (
-					"\"$(SDKROOT)/Developer/Library/Frameworks\"",
-					"\"$(DEVELOPER_LIBRARY_DIR)/Frameworks\"",
-				);
-				INFOPLIST_FILE = "MTKResourceTests/MTKResourceTests-Info.plist";
-				PRODUCT_NAME = "$(TARGET_NAME)";
-				WRAPPER_EXTENSION = octest;
-			};
-			name = Debug;
-		};
-		5BADE2B5172A652D00B6E7C5 /* Release */ = {
-			isa = XCBuildConfiguration;
-			buildSettings = {
-				FRAMEWORK_SEARCH_PATHS = (
-					"\"$(SDKROOT)/Developer/Library/Frameworks\"",
-					"\"$(DEVELOPER_LIBRARY_DIR)/Frameworks\"",
-				);
-				INFOPLIST_FILE = "MTKResourceTests/MTKResourceTests-Info.plist";
-				PRODUCT_NAME = "$(TARGET_NAME)";
-				WRAPPER_EXTENSION = octest;
-			};
-			name = Release;
-		};
 		5BADE2D2172A65FA00B6E7C5 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
@@ -562,15 +409,6 @@
 			buildConfigurations = (
 				5BADE2B1172A652D00B6E7C5 /* Debug */,
 				5BADE2B2172A652D00B6E7C5 /* Release */,
-			);
-			defaultConfigurationIsVisible = 0;
-			defaultConfigurationName = Release;
-		};
-		5BADE2B3172A652D00B6E7C5 /* Build configuration list for PBXNativeTarget "MTKResourceTests" */ = {
-			isa = XCConfigurationList;
-			buildConfigurations = (
-				5BADE2B4172A652D00B6E7C5 /* Debug */,
-				5BADE2B5172A652D00B6E7C5 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
