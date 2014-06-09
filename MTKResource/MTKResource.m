@@ -121,6 +121,11 @@
 
 
 - (NSString *)pathForFile:(NSString *)file directory:(NSString *)directory extensions:(NSArray *)extensions {
+    return [self pathForFile:file directory:directory extensions:extensions silent:NO];
+}
+
+
+- (NSString *)pathForFile:(NSString *)file directory:(NSString *)directory extensions:(NSArray *)extensions silent:(BOOL)isSilent {
     NSString *path = nil;
     
     MTKResourceLog_Debug(@"Finding path for file '%@' in directory '%@' with extensions '%@'", file, directory ?: @"/", [extensions componentsJoinedByString:@", "]);
@@ -135,6 +140,7 @@
     }
     
     if (path) MTKResourceLog_Debug(@"File '%@' found at path '%@'", file, [self pathWithinBundle:path]);
+    else if (isSilent) MTKResourceLog_Debug(@"File not found: '%@'", file);
     else MTKResourceLog_Warning(@"File not found: '%@'", file);
     
     return path;
@@ -144,7 +150,7 @@
 - (NSString *)pathForFile:(NSString *)fileWithExtension {
     NSString *file = [fileWithExtension stringByDeletingPathExtension];
     NSString *extension = [fileWithExtension pathExtension];
-    return [self pathForFile:file directory:self.defaultDirectory extensions:@[extension]];
+    return [self pathForFile:file directory:self.defaultDirectory extensions:@[extension] silent:NO];
 }
 
 
@@ -170,7 +176,7 @@
 - (NSString *)pathForStringsTable:(NSString *)tableName {
     if ( ! tableName.length) return nil;
     NSString *file = [NSString stringWithFormat:@"%@%@", (self.stringsPrefix ?: @""), tableName];
-    return [self pathForFile:file directory:self.defaultDirectory extensions:self.stringsExtensions];
+    return [self pathForFile:file directory:self.defaultDirectory extensions:self.stringsExtensions silent:YES];
 }
 
 
@@ -238,7 +244,7 @@
 - (UIImage *)imageForKey:(NSString *)imageKey {
     if ( ! imageKey) return nil;
     NSString *file = [NSString stringWithFormat:@"%@%@", (self.imagesPrefix ?: @""), imageKey];
-    NSString *path = [self pathForFile:file directory:self.defaultDirectory extensions:self.imagesExtensions];
+    NSString *path = [self pathForFile:file directory:self.defaultDirectory extensions:self.imagesExtensions silent:NO];
     return [UIImage imageWithContentsOfFile:path];
 }
 
@@ -301,7 +307,7 @@
     if ( ! objectKey) return nil;
     
     NSString *file = [NSString stringWithFormat:@"%@%@", (self.objectsPrefix ?: @""), objectKey];
-    NSString *path = [self pathForFile:file directory:self.defaultDirectory extensions:self.objectsExtensions];
+    NSString *path = [self pathForFile:file directory:self.defaultDirectory extensions:self.objectsExtensions silent:NO];
     NSData *data = [NSData dataWithContentsOfFile:path];
     if ( ! data) return nil;
     
